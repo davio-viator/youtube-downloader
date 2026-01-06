@@ -1,0 +1,7 @@
+<p>home works!</p>
+<div class="form-container">
+    <form #form="ngForm">
+        <input [(ngModel)]="videoData.link" name="link" placeholder="https://youtube.com/watch?v=ID" type="text">
+        <input type="button" (click)="testSubmit($event)" value="Go!">
+    </form>
+</div>
