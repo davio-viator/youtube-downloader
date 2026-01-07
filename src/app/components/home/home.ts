@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import axios from 'axios'
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,17 @@ export class Home {
     event.preventDefault();
     console.log(`the link is ${this.videoData.link}`);
     // this.ytdlService.downloadVideo(this.videoData.link, {});
-    return false
+    axios.get(`http://localhost:4000/api/v1/get-info?link=${this.videoData.link}`)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .finally(()=> {
+        console.log("idk")
+      })
+    return false;
   }
 
 
