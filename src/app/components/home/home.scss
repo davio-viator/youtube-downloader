@@ -34,14 +34,24 @@
 }
 
 .input-container {
-    // position: relative;
-    // width: 100%;
-    // margin: 20px auto 0px;
     display: flex;
     justify-content:space-between;
 }
 
+.pending-container {
+    width: -webkit-fill-available;
+    scale: 1/1;
+}
+
+.convertor-containre {
+    width: 100vw;
+}
+
 form {
     width: 100%;
+}
 
+.form-container {
+    max-width: 990px;
+    margin: auto;
 }

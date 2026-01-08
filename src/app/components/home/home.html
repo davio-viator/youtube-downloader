@@ -1,8 +1,20 @@
+@if (displayConvertor()) {
+    <div  class="convertor-container">
+        <app-convertor [videoData]="videoData" ></app-convertor>
+    </div>
+}
+
+@if (pending()) {
+    <div class="pending-container">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F583436%2Fscreenshots%2F1725368%2Fout.gif&f=1&nofb=1&ipt=2f72e604e1ad8e97ac7dd06e4ca23144ceab33ee8c1db9f65a0d26c7dcaa3b81" alt="">
+    </div>
+}
+
 <div class="form-container">
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="testSubmit()">
         <div class="input-container">
             <input class="link-input" [(ngModel)]="videoData.link" name="link" placeholder="https://youtube.com/watch?v=ID" type="text">
-            <input class="submit-btn" type="button" (click)="testSubmit($event)" value="Convert">
+            <button class="submit-btn" type="submit" >Convert</button>
         </div>
     </form>
 </div>

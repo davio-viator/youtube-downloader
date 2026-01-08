@@ -1,1 +1,99 @@
-<p>convertor works!</p>
+<!-- <p>{{this.videoData.name}}</p>
+<p>{{this.videoData.author}}</p>
+<p>{{this.videoData.duration}}</p>
+<p>{{this.videoData.thumbnail}}</p>
+<p>{{this.videoData.size}}</p> -->
+@if(!detailsOpen()) {
+    <div class="wrapper">
+        <div class="image-container">
+            <img class="thumbnail" src={{this.videoData.thumbnail}} alt="">
+        </div>
+        <div class="info-container">
+            <div class="title">{{videoData.name}}</div>
+            <div class="duration">duration: {{convertDuration(videoData.duration)}}</div>
+            <div class="input-container">
+                <select [(ngModel)]="selectedFormat" class="format-select">
+                    <option value="MP3">MP3</option>
+                    <option value="MP4">MP4 (video)</option>
+                </select>
+                <button class="setting-btn" (click)="openDetails()"></button>
+            </div>
+        </div>
+    </div>
+} 
+@else {
+    <div class="wrapper">
+        @if(selectedFormat === 'MP3') {
+            <div class="video-player">
+                <p>video player</p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/W7CbjY_MDGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="time-manager">
+                <p>time-manager</p>
+            </div>
+            <div class="informations">
+                <div class="info-order">
+                    <label class="thick-label">Format</label>
+                    <select [(ngModel)]="selectedFormat" class="format-select">
+                        <option value="MP3">MP3</option>
+                        <option value="MP4">MP4 (video)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="thick-label" for="">Change ID3 tag</label>
+                </div>
+                
+                <div class="info-order">
+                    <label >artist
+                        <input type="text" [value]="videoData.author">
+                    </label>
+                    <label >title
+                        <input type="text" [value]="videoData.name">
+                    </label>
+                    <label class="cover-label">cover
+                        <div class="cover-container">
+                            <img class="cover-image" id="choose-cover" (click)="selectCover($event)" src="https://web.archive.org/web/20220121000326im_/https://www.converto.io/img/no_cover.png" alt="choose-cover">
+                            <img class="cover-image selected" id="default-cover" (click)="selectCover($event)" [src]="videoData.thumbnail" alt="default-cover">
+                        </div>
+                    </label>
+                </div>
+
+                <div>
+                    <label class="thick-label" for="">File name</label>
+                </div>
+                
+                <div>
+                    <label for="">save as
+                        <input type="text" [value]="defaultSaveName">
+                    </label>
+                </div>
+            </div>
+            <div class="close">
+                <button class="cancel btn" (click)="closeDetails()">Cancel</button>
+                <button class="download btn" >Download</button>
+            </div>
+        }
+        @else if (selectedFormat === 'MP4') {
+            <div class="info-order">
+                    <label class="thick-label">Format</label>
+                    <select [(ngModel)]="selectedFormat" class="format-select">
+                        <option value="MP3">MP3</option>
+                        <option value="MP4">MP4 (video)</option>
+                    </select>
+                </div>
+            <div class="close">
+                <button (click)="closeDetails()">cancel</button>
+                <button >download</button>
+            </div>
+        } @else {
+            <h1>something happned try again</h1>
+        }
+    </div>
+
+}
+
+
+
+
+

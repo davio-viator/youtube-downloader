@@ -4,7 +4,8 @@ import { Home } from './components/home/home';
 export const routes: Routes = [
     {
         path: '',
-        component: Home,
+        // loadComponent: () => import ('./components/home/home').then(m => m.Home),
+        component: Home
     },
     {
         path: 'home',
